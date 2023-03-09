@@ -83,7 +83,7 @@ pipeline{
                 }
             }
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: 'main']], userRemoteConfigs: [[url: 'git@github.com:alvarolopez12/tf-jnk.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: 'main']], userRemoteConfigs: [[url: 'https://github.com/alvarolopez12/tf-jnk']]])
                 script { 
                     sh """
                     export BC_REPOSITORY_URL=https://github.com/alvarolopez12/tf-jnk
@@ -125,4 +125,5 @@ pipeline{
         }
 
     }
+
 }
