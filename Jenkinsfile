@@ -6,9 +6,8 @@ pipeline{
     environment {
         TF_HOME = tool('terraform')
         TF_IN_AUTOMATION = "true"
-        PYENV = $(pyenv root)/shims
         PATH = "$TF_HOME:$PATH"
-        PATH = "$PYENV:$PATH"
+        PATH = "/usr/local/opt/python@2/libexec/bin:$PATH"
     }
     stages {
     
