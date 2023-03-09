@@ -1,5 +1,9 @@
 pipeline{
-    agent any 
+    agent {
+        docker {
+            image 'kennethreitz/pipenv:latest'
+            args '-u root --privileged -v /var/run/docker.sock:/var/run/docker.sock'
+        }
     tools {
         "org.jenkinsci.plugins.terraform.TerraformInstallation" "terraform"
     }
