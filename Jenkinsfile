@@ -7,7 +7,8 @@ pipeline{
         TF_HOME = tool('terraform')
         TF_IN_AUTOMATION = "true"
         PYENV = $(pyenv root)/shims
-        PATH = "$TF_HOME:$PYENV:$PATH"
+        PATH = "$TF_HOME:$PATH"
+        PATH = "$PYENV:$PATH"
     }
     stages {
     
