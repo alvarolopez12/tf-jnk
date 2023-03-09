@@ -7,6 +7,7 @@ pipeline{
         TF_HOME = tool('terraform')
         TF_IN_AUTOMATION = "true"
         PATH = "$TF_HOME:$PATH"
+        PIPENV_VENV_IN_PROJECT="true"
     }
     stages {
     
@@ -79,8 +80,7 @@ pipeline{
             steps {
                 checkout([$class: 'GitSCM', branches: [[name: 'master']], userRemoteConfigs: [[url: 'https://github.com/alvarolopez12/tf-jnk']]])
                 script { 
-                    sh """pip3 install pipenv
-                    pipenv install
+                    sh """pipenv install
                     pipenv run pip install bridgecrew
                     pipenv run bridgecrew --directory . --bc-api-key 69a43622-8d7a-48e1-b3d2-92efe6f10dc6 --repo-id alvarolopez12/tf-jnk"""
                 }
