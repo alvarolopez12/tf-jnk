@@ -6,8 +6,7 @@ pipeline{
     environment {
         TF_HOME = tool('terraform')
         TF_IN_AUTOMATION = "true"
-        PATH = "$TF_HOME:$PATH"
-        PATH = "/usr/local/opt/python@2/libexec/bin:$PATH"
+        PATH = "$TF_HOME:/usr/local/opt/python@2/libexec/bin:$PATH"
     }
     stages {
     
