@@ -125,5 +125,9 @@ pipeline{
         }
 
     }
+    options {
+        preserveStashes()
+        timestamps()
+    }
 
 }
