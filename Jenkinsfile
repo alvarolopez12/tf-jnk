@@ -88,6 +88,7 @@ pipeline{
                     sh """
                     export BC_REPOSITORY_URL=https://github.com/alvarolopez12/tf-jnk
                     pipenv install
+                    pipenv run pip install --upgrade requests
                     pipenv run pip install bridgecrew
                     pipenv run bridgecrew --directory . --bc-api-key 197f9b53-8ceb-415e-b940-fa17885e49e3 --repo-id alvarolopez12/tf-jnk"""
                 }
