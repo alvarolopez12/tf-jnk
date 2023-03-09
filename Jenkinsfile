@@ -83,7 +83,7 @@ pipeline{
                 }
             }
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: 'master']], userRemoteConfigs: [[url: 'https://github.com/alvarolopez12/tf-jnk']]])
+                checkout([$class: 'GitSCM', branches: [[name: 'main']], userRemoteConfigs: [[url: 'https://github.com/alvarolopez12/tf-jnk']]])
                 script { 
                     sh """pipenv install
                     pipenv run pip install bridgecrew
