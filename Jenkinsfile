@@ -88,6 +88,7 @@ pipeline{
                     sh """pipenv install
                     pipenv run pip install bridgecrew
                     pipenv run bridgecrew --directory . --bc-api-key 6f031c98-4466-4def-a924-fef5b4950cf4 --repo-id alvarolopez12/tf-jnk"""
+                }
             }
         }
 
