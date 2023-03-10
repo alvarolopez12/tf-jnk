@@ -75,6 +75,26 @@ pipeline{
             }
         }
 
+        stage('Checkov') {
+            agent {
+                docker {
+                    image 'kennethreitz/pipenv:latest'
+                    args '-u root --privileged -v /var/run/docker.sock:/var/run/docker.sock'
+                }
+            }
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: 'main']], userRemoteConfigs: [[url: 'https://github.com/alvarolopez12/tf-jnk']]])
+                script { 
+                    sh """
+                    export BC_REPOSITORY_URL=https://github.com/alvarolopez12/tf-jnk
+                    pipenv install
+                    pipenv run pip install --upgrade requests
+                    pipenv run pip install bridgecrew
+                    pipenv run bridgecrew --directory . --bc-api-key 197f9b53-8ceb-415e-b940-fa17885e49e3 --repo-id alvarolopez12/tf-jnk"""
+                }
+            }
+        }
+
         stage('Waiting for Approval'){
             steps {
                 timeout(time: 10, unit: 'MINUTES') {
@@ -106,4 +126,9 @@ pipeline{
         }
 
     }
+    options {
+        preserveStashes()
+        timestamps()
+    }
+
 }
